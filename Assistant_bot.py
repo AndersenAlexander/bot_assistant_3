@@ -129,6 +129,22 @@ def show_phone(book, username):
     return str(record)
 
 
+@input_error
+def show_all(contacts):
+    if not contacts:  # Check if contacts dictionary is empty
+        return "No contacts found."
+    return "\n".join([f"{name}: {phone}" for name, phone in contacts.items()])
+
+
+def parse_input(user_input):
+    parts = user_input.split()
+    if not parts:  # If no input provided
+        return None, []
+    cmd = parts[0].lower()
+    args = parts[1:]
+    return cmd, args
+
+
 def show_all_contacts(book):
     return str(book)
 
